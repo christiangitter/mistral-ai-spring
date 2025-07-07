@@ -1,0 +1,16 @@
+version: '3.9'
+name: spring-mistral-ollama
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: mistral-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    environment:
+      - OLLAMA_MODELS=mistral
+
+volumes:
+  ollama-data:
